@@ -1,4 +1,5 @@
 import argparse
+import torch
 from utils import DataLoader, Tokenizer
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trainer, TrainingArguments
 from sklearn.metrics import accuracy_score
@@ -30,9 +31,12 @@ test_dataset = Tokenizer(tokenizer, X_test, y_test)
 # Model
 model = AutoModelForSequenceClassification.from_pretrained(args.model, num_labels=2)
 
+device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+model.to(device)
+
 # Trainer
 training_args = TrainingArguments(
-    output_dir=f'{base_dir}/checkpoints',
+    output_dir=f'{base_dir}',
     num_train_epochs=args.num_train_epochs,
     per_device_train_batch_size=args.train_batch_size,
     per_device_eval_batch_size=args.eval_batch_size,
@@ -40,8 +44,9 @@ training_args = TrainingArguments(
     warmup_steps=args.warmup_steps,
     weight_decay=args.weight_decay,
     evaluation_strategy="no",
-    save_strategy="epoch",
+    save_strategy="no",
     metric_for_best_model="accuracy"
+    
 )
 
 # Metrics
@@ -64,4 +69,4 @@ trainer.train()
 results = trainer.evaluate(test_dataset)
 print(results)
 
-model.save_pretrained(f'{base_dir}/model')
+model.save_pretrained(f'{base_dir}', safe_serialization=False)
