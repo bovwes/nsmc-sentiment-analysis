@@ -1,6 +1,6 @@
 # NSMC Sentiment Analysis
 
-This is a script to perform finetuning and inference on pre-trained Korean language models using the NSMC dataset.
+This is a script to perform fine-tuning and inference on pre-trained Korean language models using the NSMC dataset.
 
 ## Data
 
@@ -69,3 +69,13 @@ python pipeline.py --model [model_name] --input ["word_or_sentence"]
 ```json
 [{ "input": "노잼", "label": "Negative", "score": "0.9987" }]
 ```
+
+## Results
+
+Below are some pre-trained language models and their performance on NSMC. Each model was fine-tuned on the `ratings_train` set and evaluated on the `ratings_test` set. Batch sizes were set to 64 and each model was trained for 3 epochs, starting at a learning rate of 5e-5.
+
+| Model                        | Accuracy (%) |
+| ---------------------------- | ------------ |
+| KLUE-RoBERTa-small           | 90.16        |
+| KR-BERT character            | 90.03        |
+| BERT base multilingual cased | 87.18        |
