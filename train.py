@@ -8,12 +8,12 @@ import numpy as np
 # Parser
 parser = argparse.ArgumentParser(description='Train sentiment analysis model')
 parser.add_argument('--model', type=str, default='klue/roberta-base')
-parser.add_argument('--num_train_epochs', type=int, default=3)
-parser.add_argument('--train_batch_size', type=int, default=64)
-parser.add_argument('--eval_batch_size', type=int, default=64)
+parser.add_argument('--num-train-epochs', type=int, default=3)
+parser.add_argument('--train-batch-size', type=int, default=64)
+parser.add_argument('--eval-batch-size', type=int, default=64)
 parser.add_argument('--learning-rate', type=float, default=5e-5)
-parser.add_argument('--weight_decay', type=float, default=0)
-parser.add_argument('--warmup_steps', type=int, default=0)
+parser.add_argument('--weight-decay', type=float, default=0)
+parser.add_argument('--warmup-steps', type=int, default=0)
 args = parser.parse_args()
 
 base_dir = args.model.replace("/", "-")

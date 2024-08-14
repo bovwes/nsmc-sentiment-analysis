@@ -32,12 +32,12 @@ python train.py --model [model_name]
 | Parameter            | Type  | Default value       | Description                                |
 | -------------------- | ----- | ------------------- | ------------------------------------------ |
 | `--model`            | str   | "klue/roberta-base" | Name of the model, as found on Huggingface |
-| `--num_train_epochs` | int   | 3                   | Number of training epochs                  |
-| `--train_batch_size` | int   | 64                  | Batch size for training                    |
-| `--eval_batch_size`  | int   | 64                  | Batch size for evaluation                  |
+| `--num-train-epochs` | int   | 3                   | Number of training epochs                  |
+| `--train-batch-size` | int   | 64                  | Batch size for training                    |
+| `--eval-batch-size`  | int   | 64                  | Batch size for evaluation                  |
 | `--learning-rate`    | float | 5e-5                | Learning rate                              |
-| `--weight_decay`     | float | 0                   | Weight decay                               |
-| `--warmup_steps`     | int   | 0                   | Warmup steps                               |
+| `--weight-decay`     | float | 0                   | Weight decay                               |
+| `--warmup-steps`     | int   | 0                   | Warmup steps                               |
 
 ## Predict
 
